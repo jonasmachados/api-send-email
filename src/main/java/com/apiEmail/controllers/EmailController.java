@@ -17,7 +17,7 @@ import javax.validation.Valid;
 import java.util.Optional;
 import java.util.UUID;
 
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class EmailController {
 
