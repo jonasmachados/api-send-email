@@ -1,63 +1,62 @@
-<h1 align="center"> API Send Email </h1>
+# API Send Email
 
-<h2>About</h2>
-Api that send a email to a client using SpringBoot
-<P>This app sends a message to customers using the Spring Boot Starter Mail frameword, the fron-tend can do the form using method POST to consume the API.</p>
-<p>The front-end needs to make a form to return email of client, subject and text of message<p>
+## About
 
+This project is an API for sending emails to clients using Spring Boot. The frontend can utilize the API by making a `POST` request and passing the required information in a JSON format.
 
-<h2> Technologies Used</h2>
-  <u1>
-	<li><a href="https://www.oracle.com/br/java/technologies/javase-jdk11-downloads.html"> JDK 15 </a> : is a development environment for building applications, applets, and components using the Java programming language. </li>
-	 <li><a href="https://netbeans.apache.org/download/index.html"> NetBeans</a> : NetBeans IDE is a free and open source integrated development environment for software developers in the Java languages. </li>
-	<li><a href="https://spring.io/"> Spring Boot </a> : Spring Boot is an open source, microservice-based Java web framework. The Spring Boot framework creates a fully production-ready environment that is completely configurable using its prebuilt code within its codebase.</li>
-	<li><a href="https://maven.apache.org/"> Maven </a> : Maven is a build automation tool used primarily for Java projects.</li>
-	<li><a href="https://www.postman.com/downloads/"> Postman </a> : Postman is an API platform for developers to design, build, test and iterate their APIs. </li>
-	 <li><a href="https://www.postgresql.org/"> PostgreSQL</a> :  is a free and open-source relational database management system. </li>
-  <li><a href="https://www.heroku.com/"> Heroku </a> : Heroku is a cloud platform as a service (PaaS) supporting several programming languages. </li>
-	
-  </ul>
-  	
-<h2>Installation </h2>
+To send an email, the frontend needs to include the following fields in the request body:
 
-<p>For download the source code of project in yout PC, firstly you must have install in your PC the<a href="https://git-scm.com/"> GIT </a>.</p>
-<br>
-<p>With the Git installed, in your terminal execute the following command:</p>
+- `ownerRef`: Reference to the owner of the email.
+- `emailFrom`: Sender's email address.
+- `emailTo`: Recipient's email address.
+- `subject`: Subject of the email.
+- `text`: Body of the email.
 
- ```
-  $ git clone https://github.com/jonasmachados/api-send-email
- ```
- 
- <br>
-<p>Install JDK 15</p>
+## Technologies Used
 
- 	
-  	https://www.oracle.com/java/technologies/javase/jdk15-archive-downloads.html
-  	
+The following technologies were used in this project:
 
-<br>
-  	<p>Install Postman </p>
+- JDK 15
+- Spring Boot
+- Maven
+- Postman
+- PostgreSQL
 
-	 
-  	https://www.postman.com/downloads/
-  	
-	
+## Setup
 
- <p>Dependency spring starter mail. </p>
- 
-```
-     <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-mail</artifactId>
-		</dependency>
-```
-<br>
-	 
-<h3>Link of Project: </h3>
+To set up the project, follow these steps:
 
-  ```
-  https://
-  ```
+1. Clone the repository.
+2. Open the project in NetBeans or any Java IDE.
+3. Build the project using Maven.
+4. Configure the PostgreSQL database according to the application.properties file.
+5. Run the application.
+6. The API will be available at `http://localhost:8080`.
 
-<h2> Author: </h2>
- <b>        Jonas Machado</b>
+## Deployment
+
+The API is deployed and can be accessed at [https://api-send-email.up.railway.app](https://api-send-email.up.railway.app).
+
+## API Endpoints
+
+- `POST /send-email`: Sends an email to the client.
+  - Request body (JSON):
+    ```json
+    {
+      "ownerRef": "owner123",
+      "emailFrom": "sender@example.com",
+      "emailTo": "recipient@example.com",
+      "subject": "Example Subject",
+      "text": "This is the body of the email."
+    }
+    ```
+
+## Testing with Postman
+
+You can test the API using Postman:
+1. Make sure the application is running.
+2. Open Postman and import the provided collection file: [Postman Collection](https://example.com/postman-collection.json).
+3. Use the imported collection to test the API endpoints.
+
+For more details, refer to the [Postman documentation](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/).
+
