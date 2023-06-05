@@ -26,23 +26,21 @@ public class EmailController {
 
     @PostMapping("/sending-email")
     public ResponseEntity<Email> sendingEmail(@RequestBody @Valid EmailDto emailDto) {
-        Email emailModel = new Email();
-        BeanUtils.copyProperties(emailDto, emailModel);
-        emailService.sendEmail(emailModel);
-        return new ResponseEntity<>(emailModel, HttpStatus.CREATED);
+        Email email = emailService.sendEmail(emailDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(email);
     }
 
     @GetMapping("/emails")
-    public ResponseEntity<Page<Email>> getAllEmails(@PageableDefault(page = 0, size = 5, sort = "emailId", direction = Sort.Direction.DESC) Pageable pageable){
+    public ResponseEntity<Page<Email>> getAllEmails(@PageableDefault(page = 0, size = 5, sort = "emailId", direction = Sort.Direction.DESC) Pageable pageable) {
         return new ResponseEntity<>(emailService.findAll(pageable), HttpStatus.OK);
     }
 
     @GetMapping("/emails/{emailId}")
-    public ResponseEntity<Object> getOneEmail(@PathVariable(value="emailId") UUID emailId){
+    public ResponseEntity<Object> getOneEmail(@PathVariable(value = "emailId") UUID emailId) {
         Optional<Email> emailModelOptional = emailService.findById(emailId);
-        if(!emailModelOptional.isPresent()) {
+        if (!emailModelOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Email not found.");
-        }else {
+        } else {
             return ResponseEntity.status(HttpStatus.OK).body(emailModelOptional.get());
         }
     }
