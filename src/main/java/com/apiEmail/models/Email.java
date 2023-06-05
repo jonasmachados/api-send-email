@@ -11,7 +11,7 @@ import java.util.UUID;
 @Data
 @Entity
 @Table(name = "TB_EMAIL")
-public class Email {
+public class Email implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
