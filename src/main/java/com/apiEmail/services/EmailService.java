@@ -31,13 +31,14 @@ public class EmailService {
         email.setSendDateEmail(LocalDateTime.now());
 
         try {
-            String subject = email.getSubject();
-            String body = "From: " + email.getEmailFrom() + "\n\n" + email.getText();
+            String body = "Name: " + email.getOwnerRef() + "\n\n"
+                    + "From: " + email.getEmailFrom() + "\n\n"
+                    + email.getText();
 
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom(email.getEmailFrom());
             message.setTo(email.getEmailTo());
-            message.setSubject(subject);
+            message.setSubject(email.getSubject());
             message.setText(body);
             emailSender.send(message);
 
